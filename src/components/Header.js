@@ -2,9 +2,9 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div className="ms-40">
+    <div className="absolute z-50 w-full bg-black px-10">
       <img
-        className="w-48 h-20 absolute z-50"
+        className="w-28 h-16"
         src="https://www.logo.wine/a/logo/Netflix/Netflix-Logo.wine.svg"
         alt="logo"
       />
