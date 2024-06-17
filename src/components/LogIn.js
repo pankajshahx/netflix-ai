@@ -17,7 +17,6 @@ const LogIn = () => {
   const confirmPassword = useRef();
 
   const handleSubmit = () => {
-    console.log(email, password, confirmPassword);
     const message = checkValidation(
       email?.current?.value,
       password?.current?.value,

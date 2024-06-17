@@ -40,7 +40,7 @@ const Header = () => {
       {user && (
         <div className="flex">
           <img
-            className="hidden md:block w-10 h-10 mr-2 my-4 rounded-sm"
+            className="hidden md:block w-10 h-10 mr-2 my-4 rounded-sm cursor-pointer"
             alt="usericon"
             src={PROFILE_LOGO}
           />

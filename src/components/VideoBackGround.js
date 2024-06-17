@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const VideoBackGround = ({ movie_id }) => {
   useFetchMovieVideo({ movie_id });
   const movieTrailer = useSelector((store) => store?.movies?.movieTrailer);
-  console.log(movieTrailer);
+
   if (!movieTrailer) {
     return <div>Loading ...</div>;
   }

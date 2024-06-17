@@ -12,11 +12,9 @@ const useFetchMovieVideo = ({ movie_id }) => {
     );
 
     const json = await response.json();
-    console.log(json.results);
     const trailer = json.results.filter(
       (video) => video?.name === "Official Trailer"
     );
-    console.log(trailer);
     dispatch(addTrailerVideo(trailer[0] || json.results[0]));
   };
   useEffect(() => {

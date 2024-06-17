@@ -12,7 +12,6 @@ const useFetchNowPlayingMovies = () => {
     );
 
     const json = await response.json();
-    console.log(json);
     dispatch(addNowPlayingMovies(json.results));
   };
   useEffect(() => {
