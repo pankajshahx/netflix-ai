@@ -1,31 +1,16 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../utils/firebase";
-import { addUser, removeUser } from "../utils/userSlice";
 import Header from "./Header";
-import { useNavigate } from "react-router-dom";
+import useFetchNowPlayingMovies from "./hooks/useFetchNowPlayingMovies";
+import MainContainer from "./MainContainer";
+import SecondaryContainer from "./SecondaryContainer";
 
 const Browse = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const { uid, email, displayName } = user;
-        dispatch(addUser({ id: uid, email, displayName }));
-        navigate("/browse");
-      } else {
-        dispatch(removeUser());
-        navigate("/login");
-      }
-    });
-  }, []);
+  useFetchNowPlayingMovies();
   return (
     <div>
       <Header browseStyle={true} />
+      <MainContainer />
+      <SecondaryContainer />
     </div>
   );
 };

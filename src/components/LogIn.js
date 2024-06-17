@@ -1,12 +1,13 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import checkValidation from "../utils/checkValidation";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { NETFLIX_BG_IMAGE } from "./constant";
 
 const LogIn = () => {
   const [enableSignInForm, setEnableSignInForm] = useState(true);
@@ -14,7 +15,6 @@ const LogIn = () => {
   const email = useRef();
   const password = useRef();
   const confirmPassword = useRef();
-  const navigate = useNavigate();
 
   const handleSubmit = () => {
     console.log(email, password, confirmPassword);
@@ -31,46 +31,28 @@ const LogIn = () => {
         auth,
         email?.current?.value,
         password?.current?.value
-      )
-        .then((userCredential) => {
-          const user = userCredential.user;
-          navigate("/browse");
-          console.log(user);
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(errorMessage, errorCode);
-          navigate("/login");
-        });
+      ).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMessage(errorMessage, errorCode);
+      });
     } else {
       signInWithEmailAndPassword(
         auth,
         email?.current?.value,
         password?.current?.value
-      )
-        .then((userCredential) => {
-          const user = userCredential.user;
-          navigate("/browse");
-          console.log(user);
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(errorMessage, errorCode);
-          navigate("/login");
-        });
+      ).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMessage(errorMessage, errorCode);
+      });
     }
   };
   return (
     <div>
       <Header />
       <div className="absolute w-full h-full">
-        <img
-          className=""
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/9134db96-10d6-4a64-a619-a21da22f8999/a449fabb-05e4-4c8a-b062-b0bec7d03085/IN-en-20240115-trifectadaily-perspective_alpha_website_large.jpg"
-          alt="bg-pic"
-        />
+        <img className="" src={NETFLIX_BG_IMAGE} alt="bg-pic" />
       </div>
       <div className="bg-black w-[30%] p-14 text-white rounded-md absolute mx-auto right-0 left-0 my-28 bg-opacity-80">
         <form onSubmit={(e) => e.preventDefault()} className="">
