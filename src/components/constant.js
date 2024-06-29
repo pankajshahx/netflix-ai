@@ -15,3 +15,7 @@ export const API_OPTIONS = {
 };
 
 export const POSTER_CDN_URL = "https://image.tmdb.org/t/p/w500";
+
+export const OPEN_AI_KEY = process.env.REACT_APP_OPEN_AI_KEY;
+
+export const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
